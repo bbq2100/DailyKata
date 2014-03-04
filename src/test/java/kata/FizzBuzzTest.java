@@ -8,6 +8,7 @@ public class FizzBuzzTest {
 
 	@Test
 	public void test() {
+		fail("Not yet implemented");
 	}
 
 }
