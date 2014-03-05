@@ -1,6 +1,7 @@
-package kata;
+package kata.fizzbuzz;
 
 import static org.junit.Assert.*;
+import kata.fizzbuzz.FizzBuzz;
 
 import org.junit.Test;
 
@@ -9,13 +10,8 @@ public class FizzBuzzTest {
 	@Test
 	public void testOrdinaryFigures() {
 		FizzBuzz fizzBuzz = new FizzBuzz();
-
-		String result = fizzBuzz.getResult(1);
-		assertEquals("1", result);
-		
-		String result2 = fizzBuzz.getResult(2);
-		assertEquals("2", result2);
-		
+		assertEquals("1", fizzBuzz.getResult(1));
+		assertEquals("2", fizzBuzz.getResult(2));
 	}
 
 	@Test
@@ -33,8 +29,7 @@ public class FizzBuzzTest {
 
 	@Test
 	public void testMultipleOf5() {
-		FizzBuzz fizzBuzz = new FizzBuzz();
-		assertEquals("Buzz", fizzBuzz.getResult(5));
+		assertEquals("Buzz", new FizzBuzz().getResult(5));
 	}
 	
 	@Test
