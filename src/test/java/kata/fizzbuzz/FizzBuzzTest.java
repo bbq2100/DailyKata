@@ -30,6 +30,7 @@ public class FizzBuzzTest {
 	@Test
 	public void testMultipleOf5() {
 		assertEquals("Buzz", new FizzBuzz().getResult(5));
+		assertEquals("Buzz", new FizzBuzz().getResult(55));
 	}
 	
 	@Test
