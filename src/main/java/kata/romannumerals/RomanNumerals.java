@@ -20,6 +20,9 @@ public class RomanNumerals {
 					result += 1;
 				}
 			}
+			else if (charArray[i] == 'V') {
+				result += 5;
+			}
 			
 		}
 		return result;
