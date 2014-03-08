@@ -4,9 +4,13 @@ public class FizzBuzz {
 
 	public String getResult(int number) {
 		if(isNotAValidNumber(number)) return "Invalid Number";
-		else if (isMultipleOfBase(number, 3) && isMultipleOfBase(number, 5)) return "FizzBuzz";
-		else if (isMultipleOfBase(number, 3)) return "Fizz";
-		else if (isMultipleOfBase(number, 5)) return "Buzz";
+		else {
+			final int baseOf3 = 3;
+			final int baseOf5 = 5;
+			if (isMultipleOfBase(number, baseOf3) && isMultipleOfBase(number, baseOf5)) return "FizzBuzz";
+			else if (isMultipleOfBase(number, baseOf3)) return "Fizz";
+			else if (isMultipleOfBase(number, baseOf5)) return "Buzz";
+		}
 		return getOrdinaryNumber(number);
 	}
 
