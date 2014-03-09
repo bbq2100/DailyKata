@@ -1,6 +1,7 @@
 package kata.romannumerals;
 
 import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.*;
 
 import org.junit.Test;
 
@@ -8,11 +9,11 @@ public class RomanNumeralsTest {
 
 	@Test
 	public void testParseOrdinaryRomanFiguresToDecimal() {
-		assertEquals(1, RomanNumerals.parseFromRomanToDecimal("I")); 
-		assertEquals(2, RomanNumerals.parseFromRomanToDecimal("II"));
-		assertEquals(3, RomanNumerals.parseFromRomanToDecimal("III"));
-		assertEquals(4, RomanNumerals.parseFromRomanToDecimal("IV"));
-		assertEquals(5, RomanNumerals.parseFromRomanToDecimal("V"));
+		assertThat(1, is(equalTo(RomanNumerals.parseFromRomanToDecimal("I"))));
+		assertThat(2, is(equalTo(RomanNumerals.parseFromRomanToDecimal("II"))));
+		assertThat(3, is(equalTo(RomanNumerals.parseFromRomanToDecimal("III"))));
+		assertThat(4, is(equalTo(RomanNumerals.parseFromRomanToDecimal("IV"))));
+		assertThat(5, is(equalTo(RomanNumerals.parseFromRomanToDecimal("V"))));
 	}
-	
+
 }
