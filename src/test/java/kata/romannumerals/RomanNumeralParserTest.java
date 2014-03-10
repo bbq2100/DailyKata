@@ -6,10 +6,11 @@ import org.junit.Test;
 import static org.hamcrest.Matchers.*;
 
 public class RomanNumeralParserTest {
+	RomanNumeralParser cut = new RomanNumeralParser();
 
 	@Test
-	public void test() {
-		assertThat(new RomanNumeralParser(), is(notNullValue()));
+	public void testParseOrdinaryNumber() {
+		assertThat(cut.parseRomanNumeralToSyntaxTree("I"), is(notNullValue()));
 	}
 
 }
