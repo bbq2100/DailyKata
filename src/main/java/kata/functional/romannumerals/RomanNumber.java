@@ -1,4 +1,4 @@
-package kata.romannumerals;
+package kata.functional.romannumerals;
 
 public enum RomanNumber {
 	I(1), 

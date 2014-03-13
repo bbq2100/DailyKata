@@ -1,7 +1,7 @@
-package kata.fizzbuzz;
+package kata.functional.fizzbuzz;
 
 import static org.junit.Assert.*;
-import kata.fizzbuzz.FizzBuzz;
+import kata.functional.fizzbuzz.FizzBuzz;
 
 import org.junit.Test;
 
