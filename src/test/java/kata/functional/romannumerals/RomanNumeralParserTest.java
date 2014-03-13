@@ -1,8 +1,10 @@
-package kata.romannumerals;
+package kata.functional.romannumerals;
 
 import static org.junit.Assert.*;
+import kata.functional.romannumerals.RomanNumeralParser;
 
 import org.junit.Test;
+
 import static org.hamcrest.Matchers.*;
 
 public class RomanNumeralParserTest {

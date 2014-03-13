@@ -1,4 +1,4 @@
-package kata.romannumerals;
+package kata.functional.romannumerals;
 
 public class RomanNumeralParser {
 	private final String romanNumber;

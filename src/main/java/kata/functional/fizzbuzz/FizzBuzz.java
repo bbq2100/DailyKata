@@ -1,4 +1,4 @@
-package kata.fizzbuzz;
+package kata.functional.fizzbuzz;
 
 public class FizzBuzz {
 
