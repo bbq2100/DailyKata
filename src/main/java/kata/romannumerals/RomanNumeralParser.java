@@ -1,6 +1,6 @@
 package kata.romannumerals;
 
-public final class RomanNumeralParser {
+public class RomanNumeralParser {
 	private final String romanNumber;
 	
 	public RomanNumeralParser(String romanNumber) {
@@ -11,24 +11,34 @@ public final class RomanNumeralParser {
 		int result = 0;
 		for (int position = 0; position < romanNumber.length(); position++) {
 			if(hasMoreCharacters(position)) {
-				if(isNextValueGreaterThenOrEqual(position)) {
-					
+				if(isNextValueGreaterThen(position)) {
+					result += RomanNumber.getDecimalValueForRomanChar(romanNumber.charAt(position + 1)) - RomanNumber.getDecimalValueForRomanChar(romanNumber.charAt(position));
+					position++;
+				}
+				else if (isNextValueLessThen(position)) {
+					result += RomanNumber.getDecimalValueForRomanChar(romanNumber.charAt(position));
+				}
+				else {
+					result += RomanNumber.getDecimalValueForRomanChar(romanNumber.charAt(position)) + RomanNumber.getDecimalValueForRomanChar(romanNumber.charAt(position + 1));
+					position++;
 				}
 			}
-			result += getRomanValueForChar(romanNumber.charAt(position));
+			else {
+				result += RomanNumber.getDecimalValueForRomanChar(romanNumber.charAt(position));
+			}
 		}
 		return result;
 	}
 
-	private boolean isNextValueGreaterThenOrEqual(int position) {
-		return false;
+	private boolean isNextValueLessThen(int position) {
+		return (RomanNumber.getDecimalValueForRomanChar(romanNumber.charAt(position + 1)) < RomanNumber.getDecimalValueForRomanChar(romanNumber.charAt(position)));
+	}
+
+	private boolean isNextValueGreaterThen(int position) {
+		return (RomanNumber.getDecimalValueForRomanChar(romanNumber.charAt(position + 1)) > RomanNumber.getDecimalValueForRomanChar(romanNumber.charAt(position))); 
 	}
 
 	private boolean hasMoreCharacters(int position) {
-		return (position < romanNumber.length());
-	}
-
-	public static int getRomanValueForChar(char charAt) {
-		return RomanNumber.valueOf(String.valueOf(charAt)).getDecimalValue();
+		return (position < romanNumber.length() -1 );
 	}
 }

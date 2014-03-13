@@ -13,6 +13,10 @@ public enum RomanNumber {
 		return decimalValue;
 	}
 
+	public static int getDecimalValueForRomanChar(char charAt) {
+		return valueOf(String.valueOf(charAt)).getDecimalValue();
+	}
+
 	private final int decimalValue;
 
 	private RomanNumber(int value) {
