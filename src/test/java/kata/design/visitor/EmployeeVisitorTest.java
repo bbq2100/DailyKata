@@ -9,7 +9,7 @@ import org.junit.Test;
 public class EmployeeVisitorTest {
 
 	@Test
-	public void testGetHoursAndPayReportForHourlyEmployyee() {
+	public void shouldGetHoursAndPayReportForHourlyEmployyee() {
 		Employee employee = new HourlyEmployee(8,17.5F);
 		HoursAndPayReport reportVisitor = new HoursAndPayReport();
 		employee.accept(reportVisitor);
@@ -17,14 +17,14 @@ public class EmployeeVisitorTest {
 	}
 
 	@Test(expected=UnsupportedOperationException.class)
-	public void testGetHoursAndPayReportForSalariedEmployee() {
+	public void shouldGetHoursAndPayReportForSalariedEmployee() {
 		Employee salariedEmployee = new SalariedEmployee(1800F);
 		HoursAndPayReport hoursAndPayReport = new HoursAndPayReport();
 		salariedEmployee.accept(hoursAndPayReport);
 	}
 	
 	@Test
-	public void testGetSalariedPayReportForSalariedEmployee() {
+	public void shouldGetSalariedPayReportForSalariedEmployee() {
 		Employee salariedEmployee = new SalariedEmployee(11250.36F);
 		SalariedPayReport reportVisitor = new SalariedPayReport();
 		salariedEmployee.accept(reportVisitor);
@@ -32,7 +32,7 @@ public class EmployeeVisitorTest {
 	}
 	
 	@Test(expected=UnsupportedOperationException.class)
-	public void testGetSalariedPayReportForHourlyEmployee() {
+	public void shouldGetSalariedPayReportForHourlyEmployee() {
 		Employee hourlyEmployee = new HourlyEmployee(51, 515F);
 		hourlyEmployee.accept(new SalariedPayReport());
 	}
