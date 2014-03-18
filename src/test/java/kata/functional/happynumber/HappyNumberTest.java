@@ -9,15 +9,19 @@ public class HappyNumberTest {
 
 	@Test
 	public void testIsAHappyNumber() {
-		HappyNumber happyNumber = new HappyNumber(19);
-		assertThat(happyNumber.isAHappyNumber(), is(true));
+		assertThat(new HappyNumber(19).isAHappyNumber(), is(true));
+		assertThat(new HappyNumber(1).isAHappyNumber(), is(true));
+		assertThat(new HappyNumber(7).isAHappyNumber(), is(true));
+		assertThat(new HappyNumber(656).isAHappyNumber(), is(true));
+		assertThat(new HappyNumber(188).isAHappyNumber(), is(true));
 	}
 
 	@Test
 	public void testIsNotAHappyNumber() {
-		HappyNumber happyNumber = new HappyNumber(-1);
-		assertThat(happyNumber.isAHappyNumber(), is(false));
-		// assertThat(happyNumber.isAHappyNumber(20), is(false));
+		assertThat(new HappyNumber(-1).isAHappyNumber(), is(false));
+		assertThat(new HappyNumber(20).isAHappyNumber(), is(false));
+		assertThat(new HappyNumber(777).isAHappyNumber(), is(false));
+		assertThat(new HappyNumber(127).isAHappyNumber(), is(false));
 	}
 
 }
