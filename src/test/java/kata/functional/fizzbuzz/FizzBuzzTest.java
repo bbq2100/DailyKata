@@ -7,37 +7,36 @@ import org.junit.Test;
 
 public class FizzBuzzTest {
 
+	FizzBuzz cut = new FizzBuzz();
+	
 	@Test
 	public void testOrdinaryFigures() {
-		FizzBuzz fizzBuzz = new FizzBuzz();
-		assertEquals("1", fizzBuzz.getResult(1));
-		assertEquals("2", fizzBuzz.getResult(2));
+		assertEquals("1", cut.getResult(1));
+		assertEquals("2", cut.getResult(2));
 	}
 
 	@Test
 	public void testInvalidNumber() {
-		assertEquals("Invalid Number", new FizzBuzz().getResult(-4848));
+		assertEquals("Invalid Number", cut.getResult(-4848));
 	}
 	
 	@Test
 	public void testMultipleOf3() {
-		FizzBuzz fizzBuzz = new FizzBuzz();
-		assertEquals("Fizz", fizzBuzz.getResult(3));
-		assertEquals("Fizz", fizzBuzz.getResult(6));
-		assertEquals("Fizz", fizzBuzz.getResult(99));
+		assertEquals("Fizz", cut.getResult(3));
+		assertEquals("Fizz", cut.getResult(6));
+		assertEquals("Fizz", cut.getResult(99));
 	}
 
 	@Test
 	public void testMultipleOf5() {
-		assertEquals("Buzz", new FizzBuzz().getResult(5));
-		assertEquals("Buzz", new FizzBuzz().getResult(55));
+		assertEquals("Buzz", cut.getResult(5));
+		assertEquals("Buzz", cut.getResult(55));
 	}
 	
 	@Test
 	public void testMultipleOf3And5() {
-		FizzBuzz fizzBuzz = new FizzBuzz();
-		assertEquals("FizzBuzz", fizzBuzz.getResult(15));
-		assertEquals("FizzBuzz", fizzBuzz.getResult(30));
+		assertEquals("FizzBuzz", cut.getResult(15));
+		assertEquals("FizzBuzz", cut.getResult(30));
 	}
 	
 }

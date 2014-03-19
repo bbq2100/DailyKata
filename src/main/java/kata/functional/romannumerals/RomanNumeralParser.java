@@ -1,14 +1,11 @@
 package kata.functional.romannumerals;
 
 public class RomanNumeralParser {
-	private final String romanNumber;
+	private String romanNumber;
 	
-	public RomanNumeralParser(String romanNumber) {
-		this.romanNumber = romanNumber;
-	}
-
-	public int parseFromRomanToDecimal() {
+	public int parseFromRomanToDecimal(String romanNumber) {
 		int result = 0;
+		this.romanNumber = romanNumber;
 		for (int position = 0; position < romanNumber.length(); position++) {
 			if(hasMoreCharacters(position)) {
 				if(isNextValueGreaterThen(position)) {

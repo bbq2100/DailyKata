@@ -8,11 +8,8 @@ public class HappyNumber {
 	private static final int HAPPY_NUMBER = 1;
 	private int number;
 	
-	public HappyNumber(int number) {
+	public boolean isAHappyNumber(int number) {
 		this.number = number;
-	}
-
-	public boolean isAHappyNumber() {
 		if(isPositiv()) {
 			return determineHappiness();
 		}
