@@ -1,4 +1,4 @@
-package kata.design.visitor;
+package kata.designpattern.visitor;
 
 public class SalariedPayReport implements EmployeeVisitor {
 

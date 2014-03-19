@@ -1,8 +1,13 @@
-package kata.design.visitor;
+package kata.designpattern.visitor;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+import kata.designpattern.visitor.Employee;
+import kata.designpattern.visitor.HourlyEmployee;
+import kata.designpattern.visitor.HoursAndPayReport;
+import kata.designpattern.visitor.SalariedEmployee;
+import kata.designpattern.visitor.SalariedPayReport;
 
 import org.junit.Test;
 

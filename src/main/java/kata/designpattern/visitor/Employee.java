@@ -1,4 +1,4 @@
-package kata.design.visitor;
+package kata.designpattern.visitor;
 
 public abstract class Employee {
 	public abstract void accept(EmployeeVisitor visitor);
