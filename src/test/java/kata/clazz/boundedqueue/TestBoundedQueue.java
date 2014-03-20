@@ -9,7 +9,12 @@ public class TestBoundedQueue {
 	@Test
 	public void test() {
 		BoundedQueue<Integer> queue = new BoundedQueue<>(2);
-		assertThat(queue, notNullValue());
+		assertThat(queue.size(), equalTo(2));
+		assertThat(queue.count(), equalTo(0));
+		queue.enqueue(45);
+		assertThat(queue.count(), equalTo(1));
+		assertThat(queue.dequeue(), equalTo(45));
+		assertThat(queue.count(), equalTo(0));
 	}
 
 }

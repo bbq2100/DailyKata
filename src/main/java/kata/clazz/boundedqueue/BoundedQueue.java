@@ -1,26 +1,30 @@
 package kata.clazz.boundedqueue;
 
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+
 public class BoundedQueue<T> {
-	private final int size;
+	private Queue<T> blockingQueue = new ConcurrentLinkedQueue<>();
+	private final int maxSize;
 
 	public BoundedQueue(int size) {
-		this.size = size;
+		this.maxSize = size;
 	}
 
 	public void enqueue(T element) {
-		
+		this.blockingQueue.add(element);
 	}
-	
+
 	public T dequeue() {
-		return null;
+		return blockingQueue.poll();
 	}
-	
+ 
 	public int count() {
-		return 0;
+		return blockingQueue.size();
 	}
-	
+
 	public int size() {
-		return 0;
+		return maxSize;
 	}
-	
+
 }
