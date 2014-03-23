@@ -12,11 +12,21 @@ public class BoundedQueue<T> {
 	}
 
 	public void enqueue(T element) {
+		blockIfQueueHasReachedMax();
 		this.blockingQueue.add(element);
 	}
 
+	public void blockIfQueueHasReachedMax() {
+		while(blockingQueue.size() == maxSize);
+	}
+
 	public T dequeue() {
+		blockIfQueueIsEmpty(); 
 		return blockingQueue.poll();
+	}
+
+	public void blockIfQueueIsEmpty() {
+		while(blockingQueue.size() == 0);
 	}
  
 	public int count() {
