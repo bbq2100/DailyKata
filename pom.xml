@@ -4,6 +4,14 @@
 	<groupId>qabbasi.cleancode</groupId>
 	<artifactId>kata</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	
+	<properties>
+		<java.compiler.source>1.7</java.compiler.source>
+		<java.compiler.target>1.7</java.compiler.target>
+		<scala.tools.version>2.10</scala.tools.version>
+		<scala.version>2.10.0</scala.version>
+	</properties>
+	
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -18,16 +26,18 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>${java.compiler.source}}</source>
+					<target>${java.compiler.target}}</target>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
+	
 </project>
