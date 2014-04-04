@@ -1,6 +1,8 @@
+package kata.scala.lang.chapter4
+
 abstract class Widget
 
-class Button(val label: String) extends Widget {
+class ComplicatedButton(val label: String) extends Widget {
   def click() = {
     println("Button clicked")
   }
@@ -14,7 +16,7 @@ trait Subject {
   def notifyObservers = observers foreach (_.receivedUpdate(this))
 }
 
-class ObservableButton(name: String) extends Button(name) with Subject {
+class ObservableButton(name: String) extends ComplicatedButton(name) with Subject {
   override def click() = {
     super.click()
     notifyObservers

@@ -1,4 +1,4 @@
-
+package kata.scala.lang.chapter4
 import org.specs2.mutable.Specification
 import org.junit.runner.RunWith
 import org.specs2.runner.JUnitRunner
@@ -11,17 +11,17 @@ object ButtonObserverSpec extends Specification {
       val observerableButton = new ObservableButton("Okay")
       val buttonObserver = new ButtonCountObserver
       observerableButton.addObserver(buttonObserver)
-      
-      for(i <- 1 to 3) observerableButton.click()
+
+      for (i <- 1 to 3) observerableButton.click()
       buttonObserver.count mustEqual 3
     }
   }
 }
 
-object ButtonObserverTraitMixinSpec extends Specification{
+object ButtonObserverTraitMixinSpec extends Specification {
   "A Button Observer" should {
     "observer button clicks" in {
-      val observableButton = new Button("Okay") with Subject {  // mixin trait on fly: on object declaration
+      val observableButton = new ComplicatedButton("Okay") with Subject { // mixin trait directly, on object declaration
         override def click() = {
           super.click
           notifyObservers
@@ -29,8 +29,8 @@ object ButtonObserverTraitMixinSpec extends Specification{
       }
       val buttonObserver = new ButtonCountObserver
       observableButton.addObserver(buttonObserver)
-      
-      for(i <- 1 to 3) observableButton.click()
+
+      for (i <- 1 to 3) observableButton.click()
       buttonObserver.count mustEqual 3
     }
   }
