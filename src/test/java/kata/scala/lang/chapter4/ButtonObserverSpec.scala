@@ -5,6 +5,7 @@ import org.specs2.runner.JUnitRunner
 import org.specs2.matcher.MustMatchers
 import org.junit.Test
 
+@RunWith(classOf[JUnitRunner])
 object ButtonObserverSpec extends Specification {
   "A Button Observer" should {
     "observe button clicks" in {
@@ -13,24 +14,6 @@ object ButtonObserverSpec extends Specification {
       observerableButton.addObserver(buttonObserver)
 
       for (i <- 1 to 3) observerableButton.click()
-      buttonObserver.count mustEqual 3
-    }
-  }
-}
-
-object ButtonObserverTraitMixinSpec extends Specification {
-  "A Button Observer" should {
-    "observer button clicks" in {
-      val observableButton = new ComplicatedButton("Okay") with Subject { // mixin trait directly, on object declaration
-        override def click() = {
-          super.click
-          notifyObservers
-        }
-      }
-      val buttonObserver = new ButtonCountObserver
-      observableButton.addObserver(buttonObserver)
-
-      for (i <- 1 to 3) observableButton.click()
       buttonObserver.count mustEqual 3
     }
   }

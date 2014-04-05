@@ -1,6 +1,9 @@
 package kata.scala.lang.chapter4
 import org.specs2.mutable.Specification
+import org.junit.runner.RunWith
+import org.specs2.runner.JUnitRunner
 
+@RunWith(classOf[JUnitRunner])
 object ButtonClickableObserverVetoableSpec extends Specification {
   "A Button Observer with Vetoable Clicks" should {
     "observer only the first button click" in {
