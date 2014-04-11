@@ -12,4 +12,9 @@ public class Dollar {
 		return new Dollar(amount * factor); 
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		Dollar dollar = (Dollar) obj;
+		return dollar.amount == amount;
+	}
 }
