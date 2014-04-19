@@ -6,29 +6,54 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class BoundedQueue<T> {
 	private Queue<T> blockingQueue = new ConcurrentLinkedQueue<>();
 	private final int maxSize;
+	private boolean isBlocked;
 
 	public BoundedQueue(int size) {
 		this.maxSize = size;
 	}
 
-	public void enqueue(T element) {
+	public synchronized void enqueue(T element) {
 		blockIfQueueHasReachedMax();
 		this.blockingQueue.add(element);
+		unblockSiblingThread();
 	}
 
-	public void blockIfQueueHasReachedMax() {
-		while(blockingQueue.size() == maxSize);
+	private void unblockSiblingThread() {
+		if (isBlocked) {
+			notify();
+			isBlocked = false;
+		}
 	}
 
-	public T dequeue() {
-		blockIfQueueIsEmpty(); 
-		return blockingQueue.poll();
+	private void blockIfQueueHasReachedMax() {
+		if ((blockingQueue.size() == maxSize)) {
+			try {
+				isBlocked = true;
+				wait();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
-	public void blockIfQueueIsEmpty() {
-		while(blockingQueue.size() == 0);
+	public synchronized T dequeue() {
+		blockIfQueueIsEmpty();
+		T poll = blockingQueue.poll();
+		unblockSiblingThread();
+		return poll;
 	}
- 
+
+	private void blockIfQueueIsEmpty() {
+		if ((blockingQueue.size() == 0)) {
+			try {
+				isBlocked = true;
+				wait();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 	public int count() {
 		return blockingQueue.size();
 	}
