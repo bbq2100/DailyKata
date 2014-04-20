@@ -2,12 +2,12 @@ package kata.tdd.money;
 
 public class Dollar extends Money {
 
-	public Dollar(int amount) {
-		this.amount = amount;
+	public Dollar(int amount, String currency) {
+		super(amount, currency);
 	}
 
 	@Override
 	public Money times(int factor) {
-		return new Dollar(amount * factor); 
+		return Money.dollar(factor * amount);
 	}
 }

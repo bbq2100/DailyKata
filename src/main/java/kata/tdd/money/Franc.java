@@ -2,13 +2,13 @@ package kata.tdd.money;
 
 public class Franc extends Money {
 
-	public Franc(int amount) {
-		this.amount = amount;
+	public Franc(int amount, String currency) {
+		super(amount, currency);
 	}
 
 	@Override
 	public Money times(int factor) {
-		return new Franc(amount * factor); 
+		return Money.franc(factor * amount);
 	}
 
 }
