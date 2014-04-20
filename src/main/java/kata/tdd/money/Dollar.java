@@ -6,6 +6,7 @@ public class Dollar extends Money {
 		this.amount = amount;
 	}
 
+	@Override
 	public Money times(int factor) {
 		return new Dollar(amount * factor); 
 	}
