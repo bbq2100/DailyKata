@@ -1,20 +1,12 @@
 package kata.tdd.money;
 
-public class Dollar {
-
-	private int amount;
+public class Dollar extends Money {
 
 	public Dollar(int amount) {
 		this.amount = amount;
 	}
 
-	public Dollar times(int factor) {
+	public Money times(int factor) {
 		return new Dollar(amount * factor); 
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		Dollar dollar = (Dollar) obj;
-		return dollar.amount == amount;
 	}
 }
