@@ -7,7 +7,7 @@ public class Money {
 	@Override
 	public boolean equals(Object obj) {
 		Money money = (Money) obj;
-		return money.amount == amount;
+		return money.amount == amount && getClass().equals(money.getClass());
 	}
 
 }
