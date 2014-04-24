@@ -1,6 +1,6 @@
 package kata.tdd.money;
 
-public class Money {
+public class Money implements Expression {
 
 	protected int amount;
 	protected String currency;
@@ -37,5 +37,8 @@ public class Money {
 		return new Money(factor * amount, currency);
 	}
 
-	
+	public Expression plus(Money dollar) {
+		return new Money(amount + dollar.amount, currency);
+	}
+
 }
