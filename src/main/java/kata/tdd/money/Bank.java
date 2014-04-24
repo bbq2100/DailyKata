@@ -2,8 +2,8 @@ package kata.tdd.money;
 
 public class Bank {
 
-	public Money reduce(Expression expression, String string) {
-		return Money.dollar(10);
+	public Money reduce(Expression source, String to) {
+		return source.reduce(to);
 	}
 
 }
