@@ -1,6 +1,6 @@
 package kata.tdd.money;
 
-public abstract class Money {
+public class Money {
 
 	protected int amount;
 	protected String currency;
@@ -13,14 +13,12 @@ public abstract class Money {
 	@Override
 	public boolean equals(Object obj) {
 		Money money = (Money) obj;
-		return money.amount == amount && getClass().equals(money.getClass());
+		return money.amount == amount && currency().equals(money.currency());
 	}
 
 	public static Money dollar(int amount) {
 		return new Dollar(amount, "USD");
 	}
-
-	public abstract Money times(int times);
 
 	public static Money franc(int amount) {
 		return new Franc(amount, "CHF");
@@ -30,4 +28,14 @@ public abstract class Money {
 		return currency;
 	}
 
+	@Override
+	public String toString() {
+		return "Money [amount=" + amount + ", currency=" + currency + "]";
+	}
+
+	public Money times(int factor) {
+		return new Money(factor * amount, currency);
+	}
+
+	
 }
