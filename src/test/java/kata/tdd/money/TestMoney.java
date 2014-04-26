@@ -1,7 +1,9 @@
 package kata.tdd.money;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -41,10 +43,10 @@ public class TestMoney {
 	public void testPlusReturnSum() {
 		Money fiveDollar = Money.dollar(5);
 		Expression result = fiveDollar.plus(fiveDollar);
+		assertThat(result, is(Sum.class));
 		Sum sum = (Sum) result;
 		assertEquals(fiveDollar, sum.augend);
 		assertEquals(fiveDollar, sum.addend);
-
 	}
 
 	@Test
