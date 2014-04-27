@@ -33,11 +33,12 @@ public class Money implements Expression {
 		return "Money [amount=" + amount + ", currency=" + currency + "]";
 	}
 
-	public Money times(int factor) {
+	public Expression times(int factor) {
 		return new Money(factor * amount, currency);
 	}
 
-	public Expression plus(Money addend) {
+	@Override
+	public Expression plus(Expression addend) {
 		return new Sum(this, addend);
 	}
 

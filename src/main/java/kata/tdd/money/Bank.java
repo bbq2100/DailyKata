@@ -7,7 +7,7 @@ public class Bank {
 
 	private Map<Pair, Integer> currencies = new Hashtable<>();
 
-	public Money reduce(Expression source, String to) {
+	public Expression reduce(Expression source, String to) {
 		return source.reduce(to, this);
 	}
 

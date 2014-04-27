@@ -32,16 +32,16 @@ public class TestMoney {
 
 	@Test
 	public void testSimpleAddition() {
-		Money fiveDollar = Money.dollar(5);
+		Expression fiveDollar = Money.dollar(5);
 		Bank bank = new Bank();
 		Expression expression = fiveDollar.plus(fiveDollar);
-		Money reduced = bank.reduce(expression, "USD");
+		Expression reduced = bank.reduce(expression, "USD");
 		assertEquals(Money.dollar(10), reduced);
 	}
 
 	@Test
 	public void testPlusReturnSum() {
-		Money fiveDollar = Money.dollar(5);
+		Expression fiveDollar = Money.dollar(5);
 		Expression result = fiveDollar.plus(fiveDollar);
 		assertThat(result, is(Sum.class));
 		Sum sum = (Sum) result;
@@ -52,14 +52,14 @@ public class TestMoney {
 	@Test
 	public void testReduceSum() {
 		Expression sum = new Sum(Money.dollar(3), Money.dollar(4));
-		Money reduce = new Bank().reduce(sum, "USD");
+		Expression reduce = new Bank().reduce(sum, "USD");
 		assertEquals(Money.dollar(7), reduce);
 	}
 
 	@Test
 	public void testReduceMoney() {
-		Money fiveDollar = Money.dollar(5);
-		Money reduce = new Bank().reduce(fiveDollar, "USD");
+		Expression fiveDollar = Money.dollar(5);
+		Expression reduce = new Bank().reduce(fiveDollar, "USD");
 		assertEquals(Money.dollar(5), reduce);
 	}
 
@@ -67,12 +67,26 @@ public class TestMoney {
 	public void testReduceMoneyDifferentCurrency() {
 		Bank bank = new Bank();
 		bank.addRate("CHF", "USD", 2);
-		Money reduce = bank.reduce(Money.franc(2), "USD");
+		Expression reduce = bank.reduce(Money.franc(2), "USD");
 		assertEquals(Money.dollar(1), reduce);
 	}
 
 	@Test
 	public void testIdentityRate() {
 		assertEquals(1, new Bank().rate("USD", "USD"));
+	}
+
+	@Test
+	public void testMixedCurrencyAddition() {
+		Expression fiveDollar = Money.dollar(5);
+		Expression tenFrancs = Money.franc(10);
+		Bank bank = new Bank();
+
+		bank.addRate("CHF", "USD", 2);
+		Expression mixedCurrencyResult = fiveDollar.plus(tenFrancs);
+		assertThat(mixedCurrencyResult, is(Sum.class));
+
+		Expression reducedMoney = bank.reduce(mixedCurrencyResult, "USD");
+		assertEquals(Money.dollar(10), reducedMoney);
 	}
 }
