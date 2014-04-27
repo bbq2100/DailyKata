@@ -33,8 +33,9 @@ public class Money implements Expression {
 		return "Money [amount=" + amount + ", currency=" + currency + "]";
 	}
 
-	public Expression times(int factor) {
-		return new Money(factor * amount, currency);
+	@Override
+	public Expression times(int multiplier) {
+		return new Money(multiplier * amount, currency);
 	}
 
 	@Override
